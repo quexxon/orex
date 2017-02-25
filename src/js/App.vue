@@ -1,0 +1,70 @@
+<template>
+  <main id="nes-reader">
+    <input type="file" id="nes-file" accept=".nes">
+    <div class="row">
+      <table v-if="nes">
+        <tbody>
+          <tr>
+            <td>Header Format</td>
+            <td>{{ nes.version }}</td>
+          </tr>
+          <tr>
+            <td>iNES Mapper</td>
+            <td>{{ nes.mapper }}</td>
+          </tr>
+          <tr>
+            <td>TV System</td>
+            <td>{{ nes.tvSystem }}</td>
+          </tr>
+          <tr>
+            <td>PRG ROM Size</td>
+            <td>{{ `${nes.prgRomSize * 16} KiB` }}</td>
+          </tr>
+          <tr>
+            <td>CHR ROM Size</td>
+            <td>{{ `${nes.chrRomSize * 8} KiB` }}</td>
+          </tr>
+          <tr>
+            <td>PRG RAM Size</td>
+            <td>{{ `${nes.prgRamSize * 8} KiB` }}</td>
+          </tr>
+          <tr>
+            <td>Mirroring</td>
+            <td>{{ nes.mirroring }}</td>
+          </tr>
+          <tr>
+            <td>Battery?</td>
+            <td>{{ nes.battery }}</td>
+          </tr>
+          <tr>
+            <td>Trainer?</td>
+            <td>{{ nes.trainer }}</td>
+          </tr>
+          <tr>
+            <td>4 Screen VRAM?</td>
+            <td>{{ nes.fourScreenVram }}</td>
+          </tr>
+          <tr>
+            <td>VS Unisystem?</td>
+            <td>{{ nes.vsUnisystem }}</td>
+          </tr>
+          <tr>
+            <td>PlayChoice 10?</td>
+            <td>{{ nes.playChoice10 }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <canvas id="canvas"></canvas>
+      <canvas id="zoom"></canvas>
+    </div>
+  </main>
+</template>
+
+<script>
+  export default {
+    name: 'app',
+    data: {
+      nes: undefined
+    }
+  }
+</script>
